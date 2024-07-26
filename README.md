@@ -22,6 +22,7 @@ A `heraTransit` is a Luau object that can be created from an exported `.hera.lua
 </p>
 
 <div align="center">
+
 ## Easy to learn, fun to master.
 The Hera Transit Designer is a plugin that can be used to create, view, and edit `.hera` files. Artists who design their UI have the best understanding of how that interface should interact with and feel to the end user, and so the Hera Transit Designer is accessible and simple enough to learn that anyone could easily get it up and running in less than 5 minutes.
 
