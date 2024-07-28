@@ -1,0 +1,40 @@
+{
+    "name": "hera",
+    "tree": {
+      "$className": "DataModel",
+      "ReplicatedStorage": {
+        "$className": "ReplicatedStorage",
+        "$ignoreUnknownInstances": true,
+        "$path": "src/ReplicatedStorage",
+        "Packages": {
+            "$className": "Folder",
+            "$ignoreUnknownInstances": true,
+            "$path": "packages"
+        }
+      },
+      "ServerScriptService": {
+        "$className": "ServerScriptService",
+        "$ignoreUnknownInstances": true,
+        "$path": "src/ServerScriptService"
+      },
+      "ServerStorage": {
+        "$className": "ServerStorage",
+        "$ignoreUnknownInstances": true,
+        "$path": "src/ServerStorage"
+      },
+      "StarterPlayer": {
+        "$className": "StarterPlayer",
+        "StarterPlayerScripts": {
+          "$className": "StarterPlayerScripts",
+          "$ignoreUnknownInstances": true,
+          "$path": "src/StarterPlayer/StarterPlayerScripts"
+        },
+        "$ignoreUnknownInstances": true
+      },
+      "Workspace": {
+        "$className": "Workspace",
+        "$ignoreUnknownInstances": true,
+        "$path": "src/Workspace"
+      }
+    }
+  }

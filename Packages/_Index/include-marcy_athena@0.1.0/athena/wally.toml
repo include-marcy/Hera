@@ -1,0 +1,8 @@
+[package]
+name = "include-marcy/athena"
+version = "0.1.0"
+registry = "https://github.com/UpliftGames/wally-index"
+realm = "shared"
+
+exclude = ["selene.toml", "sourcemap.json", "testez.toml", "athena.project.json", "aftman.toml", ".luaurc", ".gitattributes", ".gitignore", "assets", ".vscode"]
+[dependencies]

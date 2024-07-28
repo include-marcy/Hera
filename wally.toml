@@ -1,0 +1,8 @@
+[package]
+name = "include-marcy/hera"
+version = "0.1.0"
+registry = "https://github.com/UpliftGames/wally-index"
+realm = "shared"
+
+[dependencies]
+athena = "include-marcy/athena@0.1.0"
