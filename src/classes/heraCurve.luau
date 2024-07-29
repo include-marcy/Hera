@@ -5,7 +5,7 @@
 --!optimize 2
 
 -- Library Dependencies
-local heraTypes = require(script.Parent.Parent.lib.Types);
+local heraTypes = require(script.Parent.Parent.lib.heraTypes);
 
 -- Class Definition
 local heraCurve = {};
@@ -19,7 +19,7 @@ export type heraCurve = typeof(setmetatable({} :: {
 --[==[
 	@class heraCurve
 
-	The heraCurve class is 
+	The heraCurve class is a logical container for a series of CurveHandle objects, representing the state of some object which mutates through the dimension of time.
 
 	@param heraCurveCreateInfo;
 	@return heraCurve;

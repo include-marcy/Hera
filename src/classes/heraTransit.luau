@@ -5,7 +5,7 @@
 --!optimize 2
 
 -- Library Dependencies
-local heraTypes = require(script.Parent.Parent.lib.Types);
+local heraTypes = require(script.Parent.Parent.lib.heraTypes);
 
 -- Class Definition
 local heraTransit = {};
@@ -19,7 +19,9 @@ export type heraTransit = typeof(setmetatable({} :: {
 --[==[
 	@class heraTransit
 
-	The heraTransit class is an epic class
+	The heraTransit class is designed to be a data type object which can be used to transfer
+	information across API boundaries according to the rules and conventions of the Hera
+	Virtual API.
 
 	@param heraTransitCreateInfo;
 	@return heraTransit;
