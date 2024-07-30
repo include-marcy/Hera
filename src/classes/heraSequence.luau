@@ -6,6 +6,8 @@
 
 -- Library Dependencies
 local heraTypes = require(script.Parent.Parent.lib.heraTypes);
+local heraKeyframe = require(script.Parent.heraKeyframe);
+local heraComputedKeyframeState = require(script.Parent.heraComputedKeyframeState);
 
 -- Class Definition
 local heraSequence = {};
@@ -14,6 +16,10 @@ heraSequence.__index = heraSequence;
 -- Type Definition
 export type heraSequence = typeof(setmetatable({} :: {
 	heraClassName : "heraSequence";
+	object : Instance;
+	keyframes : {heraKeyframe.heraKeyframe};
+	dirtyProperties : {string};
+	computationStateProvider : {heraComputedKeyframeState.heraComputedKeyframeState};
 }, {} :: typeof(heraSequence)))
 
 --[==[
@@ -29,17 +35,175 @@ export type heraSequence = typeof(setmetatable({} :: {
 function heraSequence.new(heraSequenceCreateInfo : heraTypes.heraSequenceCreateInfo) : heraSequence
 	local class = setmetatable({}, heraSequence);
 	class.heraClassName = "heraSequence";
+
 	class.name = heraSequenceCreateInfo.name;
+	class.object = heraSequenceCreateInfo.object;
+	class.keyframes = {};
+	class.dirtyProperties = {};
+	class.computationStateProvider = {};
 
 	return class;
 end
 
 --[==[
+	@lib Hera
 	@class heraSequence
 
+	heraBuildKeyframes is designed to generate the required keyframes needed to accurately replay this sequence according to it's heraCurveBin description.
 ]==]
-function heraSequence:heraFoo()
+function heraSequence:heraBuildKeyframes()
 
+end
+
+--[==[
+	@lib Hera
+	@class heraSequence
+
+	heraGetObject returns the object associated with this heraSequence.
+]==]
+function heraSequence:heraGetObject()
+	local obj : heraSequence = self;
+
+	return obj.object;
+end
+
+--[==[
+	@lib Hera
+	@class heraSequence
+
+	heraSetObject sets the object this heraSequence is associated with.
+]==]
+function heraSequence:heraSetObject(object : Instance)
+	local obj : heraSequence = self;
+
+	obj.object = object;
+end
+
+--[==[
+	@lib Hera
+	@class heraSequence
+
+	heraUpdate is designed to update this heraSequence to modify the computed
+	state of the object associated with this heraSequence to be associated with the keyframes stored with updated time
+
+	@param time : number
+]==]
+function heraSequence:heraUpdate(time : number)
+	local obj : heraSequence = self;
+	local dirtyProperties = obj.dirtyProperties;
+
+	for _, dirtyProperty in dirtyProperties do
+		obj:heraUpdateProperty(dirtyProperty, time);
+	end
+end
+
+--[==[
+	@lib Hera
+	@class heraSequence
+
+	heraGetKeyframesForTime returns a list of heraKeyframes stored in this heraSequence that have or are related to time t.
+
+	@param property : string;
+	@param time : number;
+]==]
+function heraSequence:heraUpdateProperty(property : string, time : number)
+	local obj : heraSequence = self;
+
+	-- Get the two keyframes which are bounding property at time
+	local keyframeA, keyframeB = obj:heraGetBoundingKeyframesForTime(property, time);
+
+	if not keyframeA or not keyframeB then
+		return;
+	end
+
+	-- Get the computation object which lets us calculate the interpolated value of property at time t using the bounding keyframes
+	local computedKeyframeState = obj:heraGetComputedKeyframeStateCached(property, keyframeA, keyframeB);
+	local state = computedKeyframeState:heraComputeState(time);
+
+	-- Update the object with the new interpolated value
+	local object = obj:heraGetObject();
+
+	object[property] = state;
+end
+
+--[==[
+	@lib Hera
+	@class heraSequence
+
+	heraGetBoundingKeyframesForTime is designed to return the two keyframes that control a property for time T,
+	when the keyframe needs interpolation
+
+	@param property : string;
+	@param time : number;
+	@return keyframeA : heraKeyframe, keyframeB : heraKeyframe
+]==]
+function heraSequence:heraGetBoundingKeyframesForTime(property : string, time : number) : (heraKeyframe.heraKeyframe, heraKeyframe.heraKeyframe)
+	local obj : heraSequence = self;
+	local keyframes = obj.keyframes;
+	local affectorKeyframes = {};
+	local keyframeA, keyframeB;
+
+	for _, keyframe in keyframes do
+		if keyframe.name == property then
+			table.insert(affectorKeyframes, keyframe);
+		end
+	end
+
+	local lowerBoundingKeyframeTime = 0;
+	local upperBoundingKeyframeTime = math.huge;
+
+	for _, propertyKeyframe : heraKeyframe.heraKeyframe in affectorKeyframes do
+		local keyframeTime = propertyKeyframe:heraGetKeyframeTime();
+
+		-- Any keyframe which has the highest time that is lower than the calculation time is the lower bounding keyframe
+		if keyframeTime > lowerBoundingKeyframeTime and keyframeTime < time then
+			lowerBoundingKeyframeTime = keyframeTime;
+			keyframeA = propertyKeyframe;
+		end
+
+		-- Vice versa for upper bound
+		if keyframeTime < upperBoundingKeyframeTime and keyframeTime > time then
+			upperBoundingKeyframeTime = keyframeTime;
+			keyframeB = propertyKeyframe;
+		end
+	end
+
+	return keyframeA, keyframeB;
+end
+
+--[==[
+	@lib Hera
+	@class heraSequence
+
+	heraGetComputedKeyframeStateCached is designed to return the cached object which relates to
+	keyframeA and keyframe B for property s at time T
+]==]
+function heraSequence:heraGetComputedKeyframeStateCached(property : string, keyframeA : heraKeyframe.heraKeyframe, keyframeB : heraKeyframe.heraKeyframe) : heraComputedKeyframeState.heraComputedKeyframeState
+	local obj : heraSequence = self;
+
+	-- Retrieve a list of keyframes that are bound to keyframe A
+	local computedKeyframeStateAList = obj.computationStateProvider[keyframeA];
+	if not computedKeyframeStateAList then
+		computedKeyframeStateAList = {};
+		obj.computationStateProvider[keyframeA] = computedKeyframeStateAList;
+	end
+
+	-- Check if the computed keyframe state exists in list A for keyframe B
+	local computedKeyframeState = computedKeyframeStateAList[keyframeB];
+	if not computedKeyframeState then
+
+		-- Create the keyframe state computer
+		computedKeyframeState = heraComputedKeyframeState.new({
+			object = obj:heraGetObject();
+			property = property;
+			keyframeA = keyframeA;
+			keyframeB = keyframeB;
+		});
+
+		computedKeyframeStateAList[keyframeB] = computedKeyframeState;
+	end
+
+	return computedKeyframeState;
 end
 
 return heraSequence;

@@ -14,6 +14,10 @@ heraKeyframe.__index = heraKeyframe;
 -- Type Definition
 export type heraKeyframe = typeof(setmetatable({} :: {
 	heraClassName : "heraKeyframe";
+	name : string;
+	value : any;
+	handleType : heraTypes.heraHandleType;
+	time : number;
 }, {} :: typeof(heraKeyframe)))
 
 --[==[
@@ -27,17 +31,55 @@ export type heraKeyframe = typeof(setmetatable({} :: {
 function heraKeyframe.new(heraKeyframeCreateInfo : heraTypes.heraKeyframeCreateInfo) : heraKeyframe
 	local class = setmetatable({}, heraKeyframe);
 	class.heraClassName = "heraKeyframe";
+
 	class.name = heraKeyframeCreateInfo.name;
+	class.value = heraKeyframeCreateInfo.value;
+	class.handleType = heraKeyframeCreateInfo.handleType;
+	class.time = heraKeyframeCreateInfo.time;
 
 	return class;
 end
 
 --[==[
+	@lib Hera
 	@class heraKeyframe
 
-]==]
-function heraKeyframe:heraFoo()
+	heraGetKeyframeValue returns the value of this keyframe.
 
+	@return value : heraInterpolationValidationType
+]==]
+function heraKeyframe:heraGetKeyframeValue() : heraTypes.heraInterpolationValidationType?
+	local obj : heraKeyframe = self;
+
+	return obj.value;
+end
+
+--[==[
+	@lib Hera
+	@class heraKeyframe
+
+	heraGetKeyframeHandleType is designed to return the handle type of this keyframe.
+
+	@return handleType : heraHandleType;
+]==]
+function heraKeyframe:heraGetKeyframeHandleType() : heraTypes.heraHandleType
+	local obj : heraKeyframe = self;
+
+	return obj.handleType;
+end
+
+--[==[
+	@lib Hera
+	@class heraKeyframe
+
+	heraGetKeyframeTime returns the time this keyframe is affecting
+
+	@return time : number;
+]==]
+function heraKeyframe:heraGetKeyframeTime() : number
+	local obj : heraKeyframe = self;
+
+	return obj.time;
 end
 
 return heraKeyframe;

@@ -5,15 +5,16 @@
       "ReplicatedStorage": {
         "$className": "ReplicatedStorage",
         "$ignoreUnknownInstances": true,
-        "Packages": {
-            "$className": "Folder",
-            "$ignoreUnknownInstances": true,
-            "$path": "packages"
-        },
+
         "Hera": {
           "$className": "ModuleScript",
           "$ignoreUnknownInstances": true,
-          "$path": "src"
+          "$path": "src",
+          "heraPackages": {
+            "$className": "Folder",
+            "$ignoreUnknownInstances": true,
+            "$path": "packages"
+          }
         }
       },
       "ServerScriptService": {

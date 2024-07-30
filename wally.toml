@@ -6,3 +6,4 @@ realm = "shared"
 
 [dependencies]
 athena = "include-marcy/athena@0.1.0"
+roact = "roblox/roact@1.4.4"

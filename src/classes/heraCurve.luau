@@ -19,7 +19,7 @@ export type heraCurve = typeof(setmetatable({} :: {
 --[==[
 	@class heraCurve
 
-	The heraCurve class is a logical container for a series of CurveHandle objects, representing the state of some object which mutates through the dimension of time.
+	No definition provided.
 
 	@param heraCurveCreateInfo;
 	@return heraCurve;
@@ -30,14 +30,6 @@ function heraCurve.new(heraCurveCreateInfo : heraTypes.heraCurveCreateInfo) : he
 	class.name = heraCurveCreateInfo.name;
 
 	return class;
-end
-
---[==[
-	@class heraCurve
-
-]==]
-function heraCurve:heraFoo()
-
 end
 
 return heraCurve;
