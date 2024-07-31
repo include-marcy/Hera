@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="570" height="906" src="/assets/HeraTextLogoDarkMode.png">
+  <img width="570" height="906" src="/assets/HeraTextLogoDarkMode.png" />
 </p>
 
 <div align="center">
@@ -18,7 +18,7 @@ A `heraTransit` is a Luau object that can be created from an exported `.hera` fi
 
 # Hera Transit Designer
 <p align="center">
-  <img src="/assets/HeraTransitDesignerLogo.png">
+  <img src="/assets/HeraTransitDesignerLogo.png" />
 </p>
 
 <div align="center">

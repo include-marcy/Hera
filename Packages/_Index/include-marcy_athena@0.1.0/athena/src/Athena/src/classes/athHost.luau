@@ -19,14 +19,14 @@ export type athHost = typeof(setmetatable({} :: {
     projectName : string;
 }, {} :: typeof(athHost)));
 
---[==[
+--[=[
     @class athHost
 
     Creates a new athHost, the entry location of a new Athena project.
 
     @param athHostCreateInfo;
     @return athHost;
-]==]
+]=]
 function athHost.new(athHostCreateInfo : athTypes.athHostCreateInfo) : athHost
     local host = setmetatable({
         athClassName = "athHost";

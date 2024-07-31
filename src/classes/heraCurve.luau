@@ -16,14 +16,14 @@ export type heraCurve = typeof(setmetatable({} :: {
 	heraClassName : "heraCurve";
 }, {} :: typeof(heraCurve)))
 
---[==[
+--[=[
 	@class heraCurve
 
 	No definition provided.
 
 	@param heraCurveCreateInfo;
 	@return heraCurve;
-]==]
+]=]
 function heraCurve.new(heraCurveCreateInfo : heraTypes.heraCurveCreateInfo) : heraCurve
 	local class = setmetatable({}, heraCurve);
 	class.heraClassName = "heraCurve";

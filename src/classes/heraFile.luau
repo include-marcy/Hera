@@ -16,14 +16,14 @@ export type heraFile = typeof(setmetatable({} :: {
 	heraClassName : "heraFile";
 }, {} :: typeof(heraFile)))
 
---[==[
+--[=[
 	@class heraFile
 
 	The heraFile class is designed to create a bridge between the .hera file type and the Hera Virtual API
 
 	@param heraFileCreateInfo;
 	@return heraFile;
-]==]
+]=]
 function heraFile.new(heraFileCreateInfo : heraTypes.heraFileCreateInfo) : heraFile
 	local class = setmetatable({}, heraFile);
 	class.heraClassName = "heraFile";
@@ -32,10 +32,10 @@ function heraFile.new(heraFileCreateInfo : heraTypes.heraFileCreateInfo) : heraF
 	return class;
 end
 
---[==[
+--[=[
 	@class heraFile
 
-]==]
+]=]
 function heraFile:heraFoo()
 
 end

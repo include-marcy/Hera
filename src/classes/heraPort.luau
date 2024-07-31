@@ -16,14 +16,14 @@ export type heraPort = typeof(setmetatable({} :: {
 	heraClassName : "heraPort";
 }, {} :: typeof(heraPort)))
 
---[==[
+--[=[
 	@class heraPort
 
 	The heraPort class is designed to act as a port between the Roblox environment and the Hera Virtual API.
 
 	@param heraPortCreateInfo;
 	@return heraPort;
-]==]
+]=]
 function heraPort.new(heraPortCreateInfo : heraTypes.heraPortCreateInfo) : heraPort
 	local class = setmetatable({}, heraPort);
 	class.heraClassName = "heraPort";
@@ -32,10 +32,10 @@ function heraPort.new(heraPortCreateInfo : heraTypes.heraPortCreateInfo) : heraP
 	return class;
 end
 
---[==[
+--[=[
 	@class heraPort
 
-]==]
+]=]
 function heraPort:heraFoo()
 
 end

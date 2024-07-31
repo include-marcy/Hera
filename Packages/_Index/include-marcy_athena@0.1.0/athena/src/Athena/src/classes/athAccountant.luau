@@ -17,7 +17,7 @@ export type athAccountant = typeof(setmetatable({} :: {
     name : string;
 }, {} :: typeof(athAccountant)));
 
---[==[
+--[=[
     @class athAccountant
 
     Creates a new athAccountant. An accountant object is used to reason about performance statistics inside
@@ -25,7 +25,7 @@ export type athAccountant = typeof(setmetatable({} :: {
 
     @param athAccountantCreateInfo;
     @return athAccountant;
-]==]
+]=]
 function athAccountant.new(athAccountantCreateInfo : athTypes.athAccountantCreateInfo) : athAccountant
     local accountant = setmetatable({
         athClassName = "athAccountant";

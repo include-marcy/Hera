@@ -17,14 +17,14 @@ export type athStopwatch = typeof(setmetatable({} :: {
     athClassName : "athStopwatch";
 }, {} :: typeof(athStopwatch)));
 
---[==[
+--[=[
     @class athStopwatch
 
     Creates a new athStopwatch.
 
     @param athStopwatchCreateInfo;
     @return athStopwatch;
-]==]
+]=]
 function athStopwatch.new(athStopwatchCreateInfo) : athStopwatch
     local stopwatch = setmetatable({
         athClassName = "athStopwatch";
@@ -38,11 +38,11 @@ function athStopwatch.new(athStopwatchCreateInfo) : athStopwatch
     return stopwatch;
 end
 
---[==[
+--[=[
     @class athStopwatch
 
     Stops the timer of this athStopwatch.
-]==]
+]=]
 function athStopwatch:athClick()
     local stopwatch : athStopwatch = self;
 
@@ -55,35 +55,35 @@ function athStopwatch:athClick()
     stopwatch._elapsedTime = (stopwatch._stopTime - stopwatch._startTime);
 end
 
---[==[
+--[=[
     @class athStopwatch
 
     Returns the length of time this stopwatch has been running for.
 
     @return elapsedTime : number;
-]==]
+]=]
 function athStopwatch:athGetTime() : number
     local stopwatch : athStopwatch = self;
 
     return stopwatch._elapsedTime;
 end
 
---[==[
+--[=[
     @class athStopwatch
 
     @retun stopwatchIsClicked : boolean;
-]==]
+]=]
 function athStopwatch:athGetState() : boolean
     local stopwatch : athStopwatch = self;
 
     return stopwatch._clicked;
 end
 
---[==[
+--[=[
     @class athStopwatch
 
     @return name : string;
-]==]
+]=]
 function athStopwatch:athGetName() : string
     local stopwatch : athStopwatch = self;
 

@@ -19,7 +19,7 @@ export type heraGui = typeof(setmetatable({} :: {
     widget : DockWidgetPluginGui?;
 }, {} :: typeof(heraGui)))
 
---[==[
+--[=[
 	@lib Hera
 	@class heraGui
 
@@ -27,7 +27,7 @@ export type heraGui = typeof(setmetatable({} :: {
 
 	@param heraGuiCreateInfo;
 	@return heraGui;
-]==]
+]=]
 function heraGui.new(heraGuiCreateInfo : heraTypes.heraGuiCreateInfo) : heraGui
 	local class = setmetatable({}, heraGui);
 	class.heraClassName = "heraGui";
@@ -36,24 +36,24 @@ function heraGui.new(heraGuiCreateInfo : heraTypes.heraGuiCreateInfo) : heraGui
 	return class;
 end
 
---[==[
+--[=[
 	@lib Hera
 	@class heraGui
 
 	heraGenerateMainHandle is designed to create the main plugin GUI handle that is the root of the plugin's GUI representation in screen space.
-]==]
+]=]
 function heraGui:heraGenerateMainHandle()
 	local obj : heraGui = self;
     local mainHandleComponent = obj:heraGetMainHandleComponent();
     Roact.createElement(mainHandleComponent);
 end
 
---[==[
+--[=[
 	@lib Hera
 	@class heraGui
 
 	heraGetMainHandleComponent is designed to return the Roact component that sources the MainHandle root node for the Hera Transit Designer Plugin GUI
-]==]
+]=]
 function heraGui:heraGetMainHandleComponent() : Roact.Component
 	return function(props)
         return Roact.createElement("Frame", {
@@ -62,12 +62,12 @@ function heraGui:heraGetMainHandleComponent() : Roact.Component
     end
 end
 
---[==[
+--[=[
 	@lib Hera
 	@class heraGui
 
 	heraMakePluginRoot creates a DockWidgetPluginGui which this Hera Virtual API GUI rests within during its lifetime.
-]==]
+]=]
 function heraGui:heraMakePluginRoot()
 	local obj : heraGui = self;
     local thisWidgetGuiCreateInfo = DockWidgetPluginGuiInfo.new(Enum.InitialDockState.Left);

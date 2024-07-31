@@ -16,14 +16,14 @@ export type heraCurveHandle = typeof(setmetatable({} :: {
 	heraClassName : "heraCurveHandle";
 }, {} :: typeof(heraCurveHandle)))
 
---[==[
+--[=[
 	@class heraCurveHandle
 
 	The heraCurveHandle class is a minimalist object representing a point that describes computed state interpolation goals for arbitrary objects.
 
 	@param heraCurveHandleCreateInfo;
 	@return heraCurveHandle;
-]==]
+]=]
 function heraCurveHandle.new(heraCurveHandleCreateInfo : heraTypes.heraCurveHandleCreateInfo) : heraCurveHandle
 	local class = setmetatable({}, heraCurveHandle);
 	class.heraClassName = "heraCurveHandle";
@@ -32,10 +32,10 @@ function heraCurveHandle.new(heraCurveHandleCreateInfo : heraTypes.heraCurveHand
 	return class;
 end
 
---[==[
+--[=[
 	@class heraCurveHandle
 
-]==]
+]=]
 function heraCurveHandle:heraFoo()
 
 end

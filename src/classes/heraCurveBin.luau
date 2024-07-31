@@ -16,14 +16,14 @@ export type heraCurveBin = typeof(setmetatable({} :: {
 	heraClassName : "heraCurveBin";
 }, {} :: typeof(heraCurveBin)))
 
---[==[
+--[=[
 	@class heraCurveBin
 
 	The heraCurveBin class is a holder object which can store and mass operate on heraCurve objects.
 
 	@param heraCurveBinCreateInfo;
 	@return heraCurveBin;
-]==]
+]=]
 function heraCurveBin.new(heraCurveBinCreateInfo : heraTypes.heraCurveBinCreateInfo) : heraCurveBin
 	local class = setmetatable({}, heraCurveBin);
 	class.heraClassName = "heraCurveBin";
@@ -32,10 +32,10 @@ function heraCurveBin.new(heraCurveBinCreateInfo : heraTypes.heraCurveBinCreateI
 	return class;
 end
 
---[==[
+--[=[
 	@class heraCurveBin
 
-]==]
+]=]
 function heraCurveBin:heraFoo()
 
 end

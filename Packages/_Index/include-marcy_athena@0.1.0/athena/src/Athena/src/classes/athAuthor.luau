@@ -23,7 +23,7 @@ export type athAuthor = typeof(setmetatable({} :: {
     _biography : {[number]: string};
 }, {} :: typeof(athAuthor)));
 
---[==[
+--[=[
     @class athAuthor
 
     Creates a new athAuthor instance. An athAuthor instance is used to write logs to the experience "biography".
@@ -32,7 +32,7 @@ export type athAuthor = typeof(setmetatable({} :: {
 
     @param athAuthorCreateInfo;
     @return athAuthor
-]==]
+]=]
 function athAuthor.new(athAuthorCreateInfo : athTypes.athAuthorCreateInfo) : athAuthor
     local author = setmetatable({
         athClassName = "athAuthor";
@@ -47,21 +47,21 @@ function athAuthor.new(athAuthorCreateInfo : athTypes.athAuthorCreateInfo) : ath
     return author;
 end
 
---[==[
+--[=[
     @class athAuthor
 
     Allows you to register middleware that will transform logged messages on this author.
     Used to automate repetitive tasks or boilerplate text onto messages.
 
     @param athLogLayerCreateInfo;
-]==]
+]=]
 function athAuthor:athAddLogLayer(athLogLayerCreateInfo)
     local author : athAuthor = self;
 
     table.insert(author._logLayers, athLogLayerCreateInfo);
 end
 
---[==[
+--[=[
     @class athAuthor
 
     Logs the message to the experience biography.
@@ -69,7 +69,7 @@ end
 
     @param message : string;
     @return transformedMessage : string;
-]==]
+]=]
 function athAuthor:athLog(message : string) : string
     local author : athAuthor = self;
 

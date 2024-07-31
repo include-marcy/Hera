@@ -33,7 +33,7 @@ local CONST_QUAD_BEZIER = function(t, p0, p1, p2)
 	return quad;
 end
 
---[==[
+--[=[
 	@lib Hera
 	@class heraComputedKeyframeState
 
@@ -43,7 +43,7 @@ end
 
 	@param heraComputedKeyframeStateCreateInfo;
 	@return heraComputedKeyframeState;
-]==]
+]=]
 function heraComputedKeyframeState.new(heraComputedKeyframeStateCreateInfo : heraTypes.heraComputedKeyframeStateCreateInfo) : heraComputedKeyframeState
 	local class = setmetatable({}, heraComputedKeyframeState);
 	class.heraClassName = "heraComputedKeyframeState";
@@ -56,7 +56,7 @@ function heraComputedKeyframeState.new(heraComputedKeyframeStateCreateInfo : her
 	return class;
 end
 
---[==[
+--[=[
 	@lib Hera
 	@class heraComputedKeyframeState
 
@@ -64,7 +64,7 @@ end
 
     @param time : number;
     @return interpolatedValue : heraInterpolationValidationType;
-]==]
+]=]
 function heraComputedKeyframeState:heraComputeState(time : number) : heraTypes.heraInterpolationValidationType
 	local obj : heraComputedKeyframeState = self;
     local keyframeA = obj.keyframeA;
@@ -78,7 +78,7 @@ function heraComputedKeyframeState:heraComputeState(time : number) : heraTypes.h
     return obj:heraInterpolate(keyframeAValue, keyframeBValue, handleType, time);
 end
 
---[==[
+--[=[
 	@lib Hera
 	@class heraComputedKeyframeState
 
@@ -89,7 +89,7 @@ end
     @param handleType : heraHandleType;
     @param time : number;
     @return interpolatedValue : heraInterpolationValidationType;
-]==]
+]=]
 function heraComputedKeyframeState:heraInterpolate(A : heraTypes.heraInterpolationValidationType, B : heraTypes.heraInterpolationValidationType, handleType : heraTypes.heraHandleType, time : number) : heraTypes.heraInterpolationValidationType
     if handleType == "HERA_HANDLE_TYPE_LINEAR" then
         return CONST_LERP(time, A, B);

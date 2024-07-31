@@ -20,14 +20,14 @@ export type athConnection = typeof(setmetatable({} :: {
 	athClassName : "athSignal";
 }, {} :: typeof(athConnection)))
 
---[==[
+--[=[
 	@class athConnection;
 
 	Creates a new athConnection in the given signal, using the supplied callback.
 
 	@param athConnectionCreateInfo;
 	@return athConnection;
-]==]
+]=]
 function athConnection.new(athConnectionCreateInfo : athTypes.athConnectionCreateInfo) : athConnection
 	local connection = setmetatable({
 		athClassName = "athSignal";
@@ -43,11 +43,11 @@ function athConnection.new(athConnectionCreateInfo : athTypes.athConnectionCreat
 	return connection;
 end
 
---[==[
+--[=[
 	@class athConnection
 
 	Removes this athConnection from the athSignal it is tied to.
-]==]
+]=]
 function athConnection:Disconnect()
 	local connectionId = self.connectionId;
 	local signal : athSignal = self.signal;

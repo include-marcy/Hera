@@ -16,14 +16,14 @@ export type heraEnvironment = typeof(setmetatable({} :: {
 	heraClassName : "heraEnvironment";
 }, {} :: typeof(heraEnvironment)))
 
---[==[
+--[=[
 	@class heraEnvironment
 
 	The heraEnvironment class is a logical container which acts as a virtual environment from which this application is rooted within.
 
 	@param heraEnvironmentCreateInfo;
 	@return heraEnvironment;
-]==]
+]=]
 function heraEnvironment.new(heraEnvironmentCreateInfo : heraTypes.heraEnvironmentCreateInfo) : heraEnvironment
 	local class = setmetatable({}, heraEnvironment);
 	class.heraClassName = "heraEnvironment";
@@ -32,10 +32,10 @@ function heraEnvironment.new(heraEnvironmentCreateInfo : heraTypes.heraEnvironme
 	return class;
 end
 
---[==[
+--[=[
 	@class heraEnvironment
 
-]==]
+]=]
 function heraEnvironment:heraFoo()
 
 end

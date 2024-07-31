@@ -35,7 +35,7 @@ export type athExtension = typeof(setmetatable({} :: {
     };
 }, {} :: typeof(athExtension)));
 
---[==[
+--[=[
     @class athExtension
 
     Creates a new athExtension. athExtensions are a way to build portable, scalable Plugins for Roblox Studio.
@@ -44,7 +44,7 @@ export type athExtension = typeof(setmetatable({} :: {
 
     @param athExtensionCreateInfo;
     @return athExtension;
-]==]
+]=]
 function athExtension.new(athExtensionCreateInfo : athTypes.athExtensionCreateInfo) : athExtension
     local extension = setmetatable({
         athClassName = "athExtension";
@@ -91,7 +91,7 @@ function athExtension.new(athExtensionCreateInfo : athTypes.athExtensionCreateIn
     return extension;
 end
 
---[==[
+--[=[
     @class athExtension
 
     Loads the athExtension, with the following actions being loaded:
@@ -99,7 +99,7 @@ end
     - Loads the code of this athExtension's main function.
     - Fires the loaded event
     - Allows it to be closed
-]==]
+]=]
 function athExtension:athLoadExtension()
     local extension : athExtension = self;
     if extension._loaded then
@@ -118,14 +118,14 @@ function athExtension:athLoadExtension()
 end
 
 
---[==[
+--[=[
     @class athExtension
 
     Creates a new DockWidget for this plugin using the athExtensionGui as a base.
 
     @param athExtensionWindowCreateInfo;
     @return Frame;
-]==]
+]=]
 function athExtension:athMakeWindow(_ : athTypes.athExtensionWindowCreateInfo) : Frame
     local extension : athExtension = self;
     local dockWidgetPluginGuiInfo = DockWidgetPluginGuiInfo.new(Enum.InitialDockState.Left, true);

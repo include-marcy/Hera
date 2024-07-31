@@ -25,7 +25,7 @@ export type athUserStore = typeof(setmetatable({} :: {
 -- Constants
 local REFERENDUM_FOLDER_NAME = "athUsersReferendum";
 
---[==[
+--[=[
     @class athUserStore
     @private
     @const
@@ -35,7 +35,7 @@ local REFERENDUM_FOLDER_NAME = "athUsersReferendum";
     Roblox Studio
 
     @return usersReferendum : Folder;
-]==]
+]=]
 local function GET_REFERENDUM_USERS() : Folder
     local usersReferendum = TestService:FindFirstChild(REFERENDUM_FOLDER_NAME);
 
@@ -48,7 +48,7 @@ local function GET_REFERENDUM_USERS() : Folder
     return usersReferendum;
 end
 
---[==[
+--[=[
     @class athUserStore
     @private
     @const
@@ -59,7 +59,7 @@ end
 
     @param user : string;
     @return userDataFolder : Folder;
-]==]
+]=]
 local function GET_USER_DATA_FOLDER(user : string) : Folder
     local usersReferendum = GET_REFERENDUM_USERS();
 
@@ -74,14 +74,14 @@ local function GET_USER_DATA_FOLDER(user : string) : Folder
     return userDataFolder;
 end
 
---[==[
+--[=[
     @class athUserStore
     Creates a new athUserStore, which are similar functionally to DataStores without any API request limits.
     They are designed to be used in Studio only, typically for library and plugin development.
 
     @param athUserStoreCreateInfo;
     @return athUserStore
-]==]
+]=]
 function athUserStore.new(athUserStoreCreateInfo : athTypes.athUserStoreCreateInfo) : athUserStore
     local userStore = setmetatable({
         athClassName = "athUserStore";
@@ -93,13 +93,13 @@ function athUserStore.new(athUserStoreCreateInfo : athTypes.athUserStoreCreateIn
     return userStore;
 end
 
---[==[
+--[=[
     @class athUserStore
     Loads a key value;
 
     @param key;
     @return any
-]==]
+]=]
 function athUserStore:athLoadAsync(key : string) : any
     local userStore : athUserStore = self;
     local dataValue : StringValue? = userStore.userDataFolder:FindFirstChild(key);
@@ -116,14 +116,14 @@ function athUserStore:athLoadAsync(key : string) : any
     end
 end
 
---[==[
+--[=[
     @class athUserStore
     Sets a key value.
     A key value can be of mostly any type. If it is a table, ensure it can be ran through and encoded in JSON.
 
     @param key;
     @param value;
-]==]
+]=]
 function athUserStore:athSetAsync(key : string, value : any)
     local userStore : athUserStore = self;
     local dataValue : StringValue? = userStore.userDataFolder:FindFirstChild(key);
@@ -160,13 +160,13 @@ function athUserStore:athSetAsync(key : string, value : any)
     end
 end
 
---[==[
+--[=[
     @class athUserStore
     Returns the possible associated instance with a given instance reference identifier for this user store.
 
     @param key;
     @return any
-]==]
+]=]
 function athUserStore:athGetPersistentInstanceAsync(instanceReferenceIdentifier : string) : Instance?
     local userStore : athUserStore = self;
     local persistentInstance = userStore.userDataFolder:FindFirstChild(instanceReferenceIdentifier);
@@ -174,13 +174,13 @@ function athUserStore:athGetPersistentInstanceAsync(instanceReferenceIdentifier 
     return persistentInstance;
 end
 
---[==[
+--[=[
     @class athUserStore
     Sets the associated instance with the given instance reference identifier for this user store.
 
     @param key;
     @return any
-]==]
+]=]
 function athUserStore:athSetPersistentInstanceAsync(instanceReferenceIdentifier : string, instance : Instance)
     local userStore : athUserStore = self;
 

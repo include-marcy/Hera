@@ -34,14 +34,14 @@ local function GET_RAW_SCALE_FOR_SYSTEM_SIZE_MOBILE(systemSize : number) : UDim2
 
 end
 
---[==[
+--[=[
     @class athMobileButton
 
     Creates a new Luau representation of the Athena mobile button implementation.
     Read more about the Athena mobile button implementation in the README.md file.
 
     @return athMobileButton
-]==]
+]=]
 function athMobileButton.new(athMobileButtonCreateInfo : athTypes.athMobileButtonCreateInfo) : athMobileButton
     local mobileButton = setmetatable({
         athClassName = "athMobileButton";
@@ -67,11 +67,11 @@ function athMobileButton.new(athMobileButtonCreateInfo : athTypes.athMobileButto
     return mobileButton;
 end
 
---[==[
+--[=[
     @class athMobileButton
 
     Creates the button instance, rendering it to the screen immediately
-]==]
+]=]
 function athMobileButton:athDrawButton() : Frame
     local mobileButton : athMobileButton = self;
     if mobileButton.buttonType == "ATH_BUTTON_NORMAL" then
@@ -83,11 +83,11 @@ function athMobileButton:athDrawButton() : Frame
     mobileButton:athUpdateStyle();
 end
 
---[==[
+--[=[
     @class athMobileButton
 
     Internal function to create a static button with no extra behavior.
-]==]
+]=]
 function athMobileButton:athDrawNormalButton() : Frame
     local mobileButton : athMobileButton = self;
 
@@ -145,14 +145,14 @@ function athMobileButton:athDrawNormalButton() : Frame
     return athButtonParent;
 end
 
---[==[
+--[=[
     @class athMobileButton
 
     Internal function to create a joystick button, aka one which has two components:
         1. The handle. The handle is used to shift the joystick in any coordinate direction.
         2. The root. The root is used to hold the handle and describe the output of the joystick as a vector.
 
-]==]
+]=]
 function athMobileButton:athDrawJoystickButton() : Frame
     local mobileButton : athMobileButton = self;
 
@@ -208,11 +208,11 @@ function athMobileButton:athDrawJoystickButton() : Frame
     return athJoystickButtonParent;
 end
 
---[==[
+--[=[
     @class athMobileButton
 
     Destroys the button instance, removing it from the data model.
-]==]
+]=]
 function athMobileButton:athEraseButton()
     local mobileButton : athMobileButton = self;
 
@@ -228,11 +228,11 @@ function athMobileButton:athEraseButton()
     mobileButton.buttonInstanceType = nil;
 end
 
---[==[
+--[=[
     @class athMobileButton
 
     Signals the button as deactivated, suppressing input while it is.
-]==]
+]=]
 function athMobileButton:athDeactivateButton()
     local mobileButton : athMobileButton = self;
     if mobileButton.active == false then
@@ -243,11 +243,11 @@ function athMobileButton:athDeactivateButton()
     mobileButton:athUpdateStyle();
 end
 
---[==[
+--[=[
     @class athMobileButton
 
     Signals the button as active, allowing input to stream from this button.
-]==]
+]=]
 function athMobileButton:athActivateButton()
     local mobileButton : athMobileButton = self;
     if mobileButton.active == true then
@@ -258,11 +258,11 @@ function athMobileButton:athActivateButton()
     mobileButton:athUpdateStyle();
 end
 
---[==[
+--[=[
     @class athMobileButton
 
     Callback that executes when the athMobileButton's buttonInstance textButton object is directly inputted.
-]==]
+]=]
 function athMobileButton:athButtonClicked()
     local mobileButton : athMobileButton = self;
     if not mobileButton.active then
@@ -272,33 +272,33 @@ function athMobileButton:athButtonClicked()
 
 end
 
---[==[
+--[=[
     @class athMobileButton
 
     Callback that executes when the user begins holding the handle of the joystick.
-]==]
+]=]
 function athMobileButton:athJoystickDown(touchPosition : UDim2)
     local button : athMobileButton = self;
 
     button.joystickDown = true;
 end
 
---[==[
+--[=[
     @class athMobileButton
 
     Callback that executes when the user releases the handle of the joystick.
-]==]
+]=]
 function athMobileButton:athJoystickUp(touchPosition : UDim2)
     local button : athMobileButton = self;
 
     button.joystickDown = true;
 end
 
---[==[
+--[=[
     @class athMobileButton
 
     Callback that executes whenever the vector of the joystick handle changes.
-]==]
+]=]
 function athMobileButton:athJoystickMoved(unit : Vector2)
 
 end
@@ -322,47 +322,47 @@ function athMobileButton:athGetJoystickDirection() : Vector2
     return normalizedDirection;
 end
 
---[==[
+--[=[
     @class athMobileButton
 
     Callback that executes whenever the athMobileButton's buttonInstance textButton has begun to be pressed.
-]==]
+]=]
 function athMobileButton:athButtonDown()
 
 end
 
---[==[
+--[=[
     @class athMobileButton
 
     Callback that executes whenever the athMobileButton's buttonInstance textButton has stopped being pressed.
-]==]
+]=]
 function athMobileButton:athButtonUp()
 
 end
 
---[==[
+--[=[
     @class athMobileButton
 
     Callback that executes whenever the athMobileButton's buttonInstance textButton has been hovered over by a mouse or finger
-]==]
+]=]
 function athMobileButton:athButtonMouseEnter()
 
 end
 
---[==[
+--[=[
     @class athMobileButton
 
     Callback that executes whenever a mouse or finger has left the athMobileButton's buttonInstance textButton
-]==]
+]=]
 function athMobileButton:athButtonMouseLeave()
 
 end
 
---[==[
+--[=[
     @class athMobileButton
 
     Configures the style of the button according to the given parameters
-]==]
+]=]
 function athMobileButton:athUpdateStyle()
     local mobileButton : athMobileButton = self;
     local buttonInstance = mobileButton.buttonInstance;
@@ -378,43 +378,43 @@ function athMobileButton:athUpdateStyle()
     end
 end
 
---[==[
+--[=[
     @class athMobileButton
 
     Creates a radial progress indicator on this button, returning a "pie chart" sweeping animation object
-]==]
+]=]
 function athMobileButton:athRadialProgressAction()
 
 end
 
---[==[
+--[=[
     @class athMobileButton
 
     Creates a horizontal progress indicator on this button, returning a "flat" sweeping animation object
-]==]
+]=]
 function athMobileButton:athHorizontalProgressAction()
 
 end
 
---[==[
+--[=[
     @class athMobileButton
 
     Creates a circular progress indicator on this button, returning a "circle" that grows and shrinks by the returned animation object.
-]==]
+]=]
 function athMobileButton:athCircularProgressAction()
 
 end
 
---[==[
+--[=[
     @class athMobileButton
 
     Hides the button, suppressing input and total visibility. Does not remove it from the data model.
-]==]
+]=]
 function athMobileButton:athHideButton()
 
 end
 
---[==[
+--[=[
     @class athMobileButton
 
     Returns the button from the hidden state.
@@ -423,25 +423,25 @@ end
     All other states that were modified or added to the button before and during its hidden state still apply 
     Such as the disabled state).
     :::
-]==]
+]=]
 function athMobileButton:athShowButton()
 
 end
 
---[==[
+--[=[
     @class athMobileButton
 
     Reallocates the position flag of this button, reordering it accordingly in the organization layer.
-]==]
+]=]
 function athMobileButton:athRepositionButton(priority : number)
 
 end
 
---[==[
+--[=[
     @class athMobileButton
 
     Resizes the button dynamically.
-]==]
+]=]
 function athMobileButton:athResizeButton(systemSize : number)
 
 end
