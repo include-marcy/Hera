@@ -5,7 +5,7 @@ local athHost = require(athClasses.athHost);
 local host : athHost.athHost = athHost.new();
 
 local Athena = {
-    athHost = host;
+	athHost = host;
 };
 
 return Athena;

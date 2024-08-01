@@ -8,6 +8,11 @@
 local heraTypes = require(script.Parent.Parent.lib.heraTypes);
 
 -- Class Definition
+--[=[
+	@class heraPort
+
+	The heraPort class is designed to act as a port between the Roblox environment and the Hera Virtual API.
+]=]
 local heraPort = {};
 heraPort.__index = heraPort;
 
@@ -17,12 +22,12 @@ export type heraPort = typeof(setmetatable({} :: {
 }, {} :: typeof(heraPort)))
 
 --[=[
-	@class heraPort
+	@within heraPort
 
 	The heraPort class is designed to act as a port between the Roblox environment and the Hera Virtual API.
 
-	@param heraPortCreateInfo;
-	@return heraPort;
+	@param heraPortCreateInfo heraTypes.heraPortCreateInfo
+	@return heraPort
 ]=]
 function heraPort.new(heraPortCreateInfo : heraTypes.heraPortCreateInfo) : heraPort
 	local class = setmetatable({}, heraPort);
@@ -30,14 +35,6 @@ function heraPort.new(heraPortCreateInfo : heraTypes.heraPortCreateInfo) : heraP
 	class.name = heraPortCreateInfo.name;
 
 	return class;
-end
-
---[=[
-	@class heraPort
-
-]=]
-function heraPort:heraFoo()
-
 end
 
 return heraPort;

@@ -15,37 +15,37 @@ local athToken = {};
 athToken.__index = athToken;
 
 export type athToken = typeof(setmetatable({} :: {
-    value : any;
-    athClassName : "athToken";
+	value : any;
+	athClassName : "athToken";
 }, {} :: typeof(athToken)));
 
 --[=[
-    @class athToken
+	@within athToken
 
-    @param athTokenCreateInfo;
-    @return athToken;
+	@param athTokenCreateInfo;
+	@return athToken;
 ]=]
 function athToken.new(athTokenCreateInfo : athTypes.athTokenCreateInfo) : athToken
-    local token = setmetatable({
-        athClassName = "athToken";
-    }, athToken);
+	local token = setmetatable({
+		athClassName = "athToken";
+	}, athToken);
 
-    token.value = athTokenCreateInfo.value;
+	token.value = athTokenCreateInfo.value;
 
-    table.freeze(token);
+	table.freeze(token);
 
-    return token;
+	return token;
 end
 
 --[=[
-    @class athToken
+	@within athToken
 
-    @return value : any;
+	@return value : any;
 ]=]
 function athToken:athReadValue()
-    local token : athToken = self;
+	local token : athToken = self;
 
-    return token.value;
+	return token.value;
 end
 
 return athToken;

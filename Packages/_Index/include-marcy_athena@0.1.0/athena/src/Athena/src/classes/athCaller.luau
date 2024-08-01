@@ -15,18 +15,18 @@ local athCaller = {};
 athCaller.__index = athCaller;
 
 export type athCaller = typeof(setmetatable({} :: {
-    athClassName : "athCaller";
-    name : string;
+	athClassName : "athCaller";
+	name : string;
 }, {} :: typeof(athCaller)));
 
 function athCaller.new(athCallerCreateInfo : athTypes.athCallerCreateInfo) : athCaller
-    local caller = setmetatable({
-        athClassName = "athCaller";
-    }, athCaller);
+	local caller = setmetatable({
+		athClassName = "athCaller";
+	}, athCaller);
 
-    caller.name = athCallerCreateInfo.name;
+	caller.name = athCallerCreateInfo.name;
 
-    return caller;
+	return caller;
 end
 
 function athCaller:athFoo()

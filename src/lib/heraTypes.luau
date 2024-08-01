@@ -54,9 +54,9 @@ export type heraGuiCreateInfo = {
 
 export type heraComputedKeyframeStateCreateInfo = {
 	keyframeA : any;
-    keyframeB : any;
-    object : Instance;
-    property : string;
+	keyframeB : any;
+	object : Instance;
+	property : string;
 };
 
 return heraTypes;

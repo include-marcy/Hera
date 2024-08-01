@@ -21,7 +21,7 @@ export type athConnection = typeof(setmetatable({} :: {
 }, {} :: typeof(athConnection)))
 
 --[=[
-	@class athConnection;
+	@within athConnection;
 
 	Creates a new athConnection in the given signal, using the supplied callback.
 
@@ -44,7 +44,7 @@ function athConnection.new(athConnectionCreateInfo : athTypes.athConnectionCreat
 end
 
 --[=[
-	@class athConnection
+	@within athConnection
 
 	Removes this athConnection from the athSignal it is tied to.
 ]=]

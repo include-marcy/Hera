@@ -8,6 +8,11 @@
 local heraTypes = require(script.Parent.Parent.lib.heraTypes);
 
 -- Class Definition
+--[=[
+	@class heraTimeline
+
+	The heraTimeline class is designed to represent the dimension of time in the Hera Virtual API.
+]=]
 local heraTimeline = {};
 heraTimeline.__index = heraTimeline;
 
@@ -19,12 +24,12 @@ export type heraTimeline = typeof(setmetatable({} :: {
 }, {} :: typeof(heraTimeline)))
 
 --[=[
-	@class heraTimeline
+	@within heraTimeline
 
 	The heraTimeline class is designed to represent the dimension of time in the Hera Virtual API.
 
-	@param heraTimelineCreateInfo;
-	@return heraTimeline;
+	@param heraTimelineCreateInfo heraTypes.heraTimelineCreateInfo
+	@return timeline
 ]=]
 function heraTimeline.new(heraTimelineCreateInfo : heraTypes.heraTimelineCreateInfo) : heraTimeline
 	local class = setmetatable({}, heraTimeline);
@@ -36,8 +41,7 @@ function heraTimeline.new(heraTimelineCreateInfo : heraTypes.heraTimelineCreateI
 end
 
 --[=[
-	@lib Hera
-	@class heraTimeline
+	@within heraTimeline
 
 	heraUpdate will update the current time of this heraTimeline
 ]=]
@@ -48,10 +52,11 @@ function heraTimeline:heraUpdate()
 end
 
 --[=[
-	@lib Hera
-	@class heraTimeline
+	@within heraTimeline
 
 	heraGetTime is designed to return the current time of the heraTimeline
+
+	@return time number
 ]=]
 function heraTimeline:heraGetTime() : number
 	local obj : heraTimeline = self;
@@ -60,10 +65,11 @@ function heraTimeline:heraGetTime() : number
 end
 
 --[=[
-	@lib Hera
-	@class heraTimeline
+	@within heraTimeline
 
 	heraSetTime is designed to set the current time of the heraTimeline
+
+	@param newTime number
 ]=]
 function heraTimeline:heraSetTime(newTime : number)
 	local obj : heraTimeline = self;

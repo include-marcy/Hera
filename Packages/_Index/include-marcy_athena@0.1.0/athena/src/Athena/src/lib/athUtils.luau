@@ -3,13 +3,13 @@
 local athUtils = {};
 
 --[=[
-    @public
-    @athUtils
+	@public
+	@athUtils
 
-    Returns 
+	Returns 
 ]=]
 function athUtils.athIsA(Class, athClassName)
-    return typeof(Class) == "table" and (Class.athClassName or "athUnlabeledClass") == athClassName;
+	return typeof(Class) == "table" and (Class.athClassName or "athUnlabeledClass") == athClassName;
 end
 
 return athUtils;

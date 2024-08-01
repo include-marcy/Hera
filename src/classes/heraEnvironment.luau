@@ -8,6 +8,11 @@
 local heraTypes = require(script.Parent.Parent.lib.heraTypes);
 
 -- Class Definition
+--[=[
+	@class heraEnvironment
+
+	The heraEnvironment class is a logical container which acts as a virtual environment from which this application is rooted within.
+]=]
 local heraEnvironment = {};
 heraEnvironment.__index = heraEnvironment;
 
@@ -17,12 +22,12 @@ export type heraEnvironment = typeof(setmetatable({} :: {
 }, {} :: typeof(heraEnvironment)))
 
 --[=[
-	@class heraEnvironment
+	@within heraEnvironment
 
 	The heraEnvironment class is a logical container which acts as a virtual environment from which this application is rooted within.
 
-	@param heraEnvironmentCreateInfo;
-	@return heraEnvironment;
+	@param heraEnvironmentCreateInfo heraTypes.heraEnvironmentCreateInfo
+	@return environment heraEnvironment
 ]=]
 function heraEnvironment.new(heraEnvironmentCreateInfo : heraTypes.heraEnvironmentCreateInfo) : heraEnvironment
 	local class = setmetatable({}, heraEnvironment);
@@ -30,14 +35,6 @@ function heraEnvironment.new(heraEnvironmentCreateInfo : heraTypes.heraEnvironme
 	class.name = heraEnvironmentCreateInfo.name;
 
 	return class;
-end
-
---[=[
-	@class heraEnvironment
-
-]=]
-function heraEnvironment:heraFoo()
-
 end
 
 return heraEnvironment;

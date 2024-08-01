@@ -8,6 +8,11 @@
 local heraTypes = require(script.Parent.Parent.lib.heraTypes);
 
 -- Class Definition
+--[=[
+	@class heraCurveHandle
+
+	The heraCurveHandle class is a minimalist object representing a point that describes computed state interpolation goals for arbitrary objects.
+]=]
 local heraCurveHandle = {};
 heraCurveHandle.__index = heraCurveHandle;
 
@@ -17,12 +22,12 @@ export type heraCurveHandle = typeof(setmetatable({} :: {
 }, {} :: typeof(heraCurveHandle)))
 
 --[=[
-	@class heraCurveHandle
+	@within heraCurveHandle
 
 	The heraCurveHandle class is a minimalist object representing a point that describes computed state interpolation goals for arbitrary objects.
 
-	@param heraCurveHandleCreateInfo;
-	@return heraCurveHandle;
+	@param heraCurveHandleCreateInfo heraTypes.heraCurveHandleCreateInfo
+	@return curveHandle heraCurveHandle
 ]=]
 function heraCurveHandle.new(heraCurveHandleCreateInfo : heraTypes.heraCurveHandleCreateInfo) : heraCurveHandle
 	local class = setmetatable({}, heraCurveHandle);
@@ -30,14 +35,6 @@ function heraCurveHandle.new(heraCurveHandleCreateInfo : heraTypes.heraCurveHand
 	class.name = heraCurveHandleCreateInfo.name;
 
 	return class;
-end
-
---[=[
-	@class heraCurveHandle
-
-]=]
-function heraCurveHandle:heraFoo()
-
 end
 
 return heraCurveHandle;

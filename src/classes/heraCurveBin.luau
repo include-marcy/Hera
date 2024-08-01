@@ -8,6 +8,11 @@
 local heraTypes = require(script.Parent.Parent.lib.heraTypes);
 
 -- Class Definition
+--[=[
+	@class heraCurveBin
+
+	The heraCurveBin class is a holder object which can store and mass operate on heraCurve objects.
+]=]
 local heraCurveBin = {};
 heraCurveBin.__index = heraCurveBin;
 
@@ -17,12 +22,12 @@ export type heraCurveBin = typeof(setmetatable({} :: {
 }, {} :: typeof(heraCurveBin)))
 
 --[=[
-	@class heraCurveBin
+	@within heraCurveBin
 
 	The heraCurveBin class is a holder object which can store and mass operate on heraCurve objects.
 
-	@param heraCurveBinCreateInfo;
-	@return heraCurveBin;
+	@param heraCurveBinCreateInfo heraTypes.heraCurveBinCreateInfo
+	@return curveBin heraCurveBin
 ]=]
 function heraCurveBin.new(heraCurveBinCreateInfo : heraTypes.heraCurveBinCreateInfo) : heraCurveBin
 	local class = setmetatable({}, heraCurveBin);
@@ -30,14 +35,6 @@ function heraCurveBin.new(heraCurveBinCreateInfo : heraTypes.heraCurveBinCreateI
 	class.name = heraCurveBinCreateInfo.name;
 
 	return class;
-end
-
---[=[
-	@class heraCurveBin
-
-]=]
-function heraCurveBin:heraFoo()
-
 end
 
 return heraCurveBin;

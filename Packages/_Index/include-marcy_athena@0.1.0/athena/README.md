@@ -40,18 +40,18 @@ The tertiary component of the Athena API, which is targeted towards developers w
 The following documentation describes the goals and behavior of the Athena Mobile Button implementation.
 
 1. Mobile Button Implementations should be implemented as simply as possible for maintainers.
-    a. The Mobile Button Implementation should be implemented in as few lines of code as possible.
-    b. The Mobile Button implementation should never demand any additional dependencies or files in the codebase.
-    c. The maintainers should be able to implement-and-forget the mobile button implementation.
+	a. The Mobile Button Implementation should be implemented in as few lines of code as possible.
+	b. The Mobile Button implementation should never demand any additional dependencies or files in the codebase.
+	c. The maintainers should be able to implement-and-forget the mobile button implementation.
 2. Mobile Button Implementations should sacrifice nothing in terms of user experience for users.
-    a. The experience should be identical in quality to the experience on other input platforms.
+	a. The experience should be identical in quality to the experience on other input platforms.
 3. Mobile Button Implementations should exceed or meet the standards of quality in terms of controls provided by ©Roblox Corporation.
-    a. Mobile Button Implementations should never fail to immediately respond to user input.
-    b. Mobile Button Implementations should return exact outputs modified by the scalar of the user input parameters (i.e how far did they drag the joystick?).
-    c. Mobile Button Implementations should be performant and reliable, and style consistent with Roblox's user interface by default.
+	a. Mobile Button Implementations should never fail to immediately respond to user input.
+	b. Mobile Button Implementations should return exact outputs modified by the scalar of the user input parameters (i.e how far did they drag the joystick?).
+	c. Mobile Button Implementations should be performant and reliable, and style consistent with Roblox's user interface by default.
 4. Mobile Button Implementations should be highly customizable and flexible for maintainers.
-    a. Mobile Button Style should be entirely customizable.
-    b. Mobile Button Behaviour should be maintainer exposed.
+	a. Mobile Button Style should be entirely customizable.
+	b. Mobile Button Behaviour should be maintainer exposed.
 5. Mobile Button Implementations should exceed the standards of quality in terms of existing open-source mobile button implementations (i.e [ContextActionUtility](https://devforum.roblox.com/t/source-code-contextactionutility/804187)).
 
 ## Athena MBI Checklist

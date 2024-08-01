@@ -1,36 +1,36 @@
 {
   "name": "Roact Benchmarks Place",
   "tree": {
-    "$className": "DataModel",
+	"$className": "DataModel",
 
-    "ReplicatedStorage": {
-      "$className": "ReplicatedStorage",
+	"ReplicatedStorage": {
+	  "$className": "ReplicatedStorage",
 
-      "Roact": {
-        "$path": "src"
-      }
-    },
+	  "Roact": {
+		"$path": "src"
+	  }
+	},
 
-    "ServerScriptService": {
-      "$className": "ServerScriptService",
+	"ServerScriptService": {
+	  "$className": "ServerScriptService",
 
-      "RoactBenchmark": {
-        "$path": "benchmarks"
-      }
-    },
+	  "RoactBenchmark": {
+		"$path": "benchmarks"
+	  }
+	},
 
-    "HttpService": {
-      "$className": "HttpService",
-      "$properties": {
-        "HttpEnabled": true
-      }
-    },
+	"HttpService": {
+	  "$className": "HttpService",
+	  "$properties": {
+		"HttpEnabled": true
+	  }
+	},
 
-    "Players": {
-      "$className": "Players",
-      "$properties": {
-        "CharacterAutoLoads": false
-      }
-    }
+	"Players": {
+	  "$className": "Players",
+	  "$properties": {
+		"CharacterAutoLoads": false
+	  }
+	}
   }
 }

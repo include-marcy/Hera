@@ -15,18 +15,18 @@ local athEnumerator = {};
 athEnumerator.__index = athEnumerator;
 
 export type athEnumerator = typeof(setmetatable({} :: {
-    athClassName : "athEnumerator";
-    name : string;
+	athClassName : "athEnumerator";
+	name : string;
 }, {} :: typeof(athEnumerator)));
 
 function athEnumerator.new(athEnumeratorCreateInfo : athTypes.athEnumeratorCreateInfo) : athEnumerator
-    local enumerator = setmetatable({
-        athClassName = "athEnumerator";
-    }, athEnumerator);
+	local enumerator = setmetatable({
+		athClassName = "athEnumerator";
+	}, athEnumerator);
 
-    enumerator.name = athEnumeratorCreateInfo.name;
+	enumerator.name = athEnumeratorCreateInfo.name;
 
-    return enumerator;
+	return enumerator;
 end
 
 function athEnumerator:athFoo()

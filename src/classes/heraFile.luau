@@ -8,6 +8,11 @@
 local heraTypes = require(script.Parent.Parent.lib.heraTypes);
 
 -- Class Definition
+--[=[
+	@class heraFile
+
+	The heraFile class is designed to create a bridge between the .hera file type and the Hera Virtual API
+]=]
 local heraFile = {};
 heraFile.__index = heraFile;
 
@@ -17,12 +22,12 @@ export type heraFile = typeof(setmetatable({} :: {
 }, {} :: typeof(heraFile)))
 
 --[=[
-	@class heraFile
+	@within heraFile
 
 	The heraFile class is designed to create a bridge between the .hera file type and the Hera Virtual API
 
-	@param heraFileCreateInfo;
-	@return heraFile;
+	@param heraFileCreateInfo heraTypes.heraFileCreateInfo
+	@return file heraFile
 ]=]
 function heraFile.new(heraFileCreateInfo : heraTypes.heraFileCreateInfo) : heraFile
 	local class = setmetatable({}, heraFile);
@@ -30,14 +35,6 @@ function heraFile.new(heraFileCreateInfo : heraTypes.heraFileCreateInfo) : heraF
 	class.name = heraFileCreateInfo.name;
 
 	return class;
-end
-
---[=[
-	@class heraFile
-
-]=]
-function heraFile:heraFoo()
-
 end
 
 return heraFile;

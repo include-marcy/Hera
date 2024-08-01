@@ -8,6 +8,11 @@
 local heraTypes = require(script.Parent.Parent.lib.heraTypes);
 
 -- Class Definition
+--[=[
+	@class heraCurve
+
+	No definition provided.
+]=]
 local heraCurve = {};
 heraCurve.__index = heraCurve;
 
@@ -17,12 +22,12 @@ export type heraCurve = typeof(setmetatable({} :: {
 }, {} :: typeof(heraCurve)))
 
 --[=[
-	@class heraCurve
+	@within heraCurve
 
 	No definition provided.
 
-	@param heraCurveCreateInfo;
-	@return heraCurve;
+	@param heraCurveCreateInfo heraTypes.heraCurveCreateInfo;
+	@return curve heraCurve;
 ]=]
 function heraCurve.new(heraCurveCreateInfo : heraTypes.heraCurveCreateInfo) : heraCurve
 	local class = setmetatable({}, heraCurve);

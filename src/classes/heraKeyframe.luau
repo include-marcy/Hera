@@ -8,6 +8,12 @@
 local heraTypes = require(script.Parent.Parent.lib.heraTypes);
 
 -- Class Definition
+--[=[
+	@class heraKeyframe
+
+	The heraKeyframe class is designed to act as a virtual state object at some time T for object N contained
+	within a heraSequence
+]=]
 local heraKeyframe = {};
 heraKeyframe.__index = heraKeyframe;
 
@@ -21,13 +27,13 @@ export type heraKeyframe = typeof(setmetatable({} :: {
 }, {} :: typeof(heraKeyframe)))
 
 --[=[
-	@class heraKeyframe
+	@within heraKeyframe
 
 	The heraKeyframe class is designed to act as a virtual state object at some time T for object N contained
 	within a heraSequence
 
-	@param heraKeyframeCreateInfo;
-	@return heraKeyframe;
+	@param heraKeyframeCreateInfo heraTypes.heraKeyframeCreateInfo
+	@return keyframe heraKeyframe.heraKeyframe
 ]=]
 function heraKeyframe.new(heraKeyframeCreateInfo : heraTypes.heraKeyframeCreateInfo) : heraKeyframe
 	local class = setmetatable({}, heraKeyframe);
@@ -42,12 +48,12 @@ function heraKeyframe.new(heraKeyframeCreateInfo : heraTypes.heraKeyframeCreateI
 end
 
 --[=[
-	@lib Hera
-	@class heraKeyframe
+	
+	@within heraKeyframe
 
 	heraGetKeyframeValue returns the value of this keyframe.
 
-	@return value : heraInterpolationValidationType
+	@return value heraTypes.heraInterpolationValidationType
 ]=]
 function heraKeyframe:heraGetKeyframeValue() : heraTypes.heraInterpolationValidationType?
 	local obj : heraKeyframe = self;
@@ -56,12 +62,12 @@ function heraKeyframe:heraGetKeyframeValue() : heraTypes.heraInterpolationValida
 end
 
 --[=[
-	@lib Hera
-	@class heraKeyframe
+	
+	@within heraKeyframe
 
 	heraGetKeyframeHandleType is designed to return the handle type of this keyframe.
 
-	@return handleType : heraHandleType;
+	@return handleType heraTypes.heraHandleType
 ]=]
 function heraKeyframe:heraGetKeyframeHandleType() : heraTypes.heraHandleType
 	local obj : heraKeyframe = self;
@@ -70,12 +76,12 @@ function heraKeyframe:heraGetKeyframeHandleType() : heraTypes.heraHandleType
 end
 
 --[=[
-	@lib Hera
-	@class heraKeyframe
+	
+	@within heraKeyframe
 
 	heraGetKeyframeTime returns the time this keyframe is affecting
 
-	@return time : number;
+	@return time number
 ]=]
 function heraKeyframe:heraGetKeyframeTime() : number
 	local obj : heraKeyframe = self;

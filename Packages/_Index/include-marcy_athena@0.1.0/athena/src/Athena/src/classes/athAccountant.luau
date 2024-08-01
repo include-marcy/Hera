@@ -13,27 +13,27 @@ local athAccountant = {};
 athAccountant.__index = athAccountant;
 
 export type athAccountant = typeof(setmetatable({} :: {
-    athClassName : "athAccountant";
-    name : string;
+	athClassName : "athAccountant";
+	name : string;
 }, {} :: typeof(athAccountant)));
 
 --[=[
-    @class athAccountant
+	@within athAccountant
 
-    Creates a new athAccountant. An accountant object is used to reason about performance statistics inside
-    your experience.
+	Creates a new athAccountant. An accountant object is used to reason about performance statistics inside
+	your experience.
 
-    @param athAccountantCreateInfo;
-    @return athAccountant;
+	@param athAccountantCreateInfo;
+	@return athAccountant;
 ]=]
 function athAccountant.new(athAccountantCreateInfo : athTypes.athAccountantCreateInfo) : athAccountant
-    local accountant = setmetatable({
-        athClassName = "athAccountant";
-    }, athAccountant);
+	local accountant = setmetatable({
+		athClassName = "athAccountant";
+	}, athAccountant);
 
-    accountant.name = athAccountantCreateInfo.name;
+	accountant.name = athAccountantCreateInfo.name;
 
-    return accountant;
+	return accountant;
 end
 
 function athAccountant:athFoo()

@@ -10,6 +10,13 @@ local heraKeyframe = require(script.Parent.heraKeyframe);
 local heraComputedKeyframeState = require(script.Parent.heraComputedKeyframeState);
 
 -- Class Definition
+--[=[
+	@class heraSequence
+
+	The heraSequence class is designed to be a supercession of the physical state of some
+	Roblox Instance. It contains mutations of state through the dimensions of time, and can
+	generate or contain heraKeyframes describing this mutation.
+]=]
 local heraSequence = {};
 heraSequence.__index = heraSequence;
 
@@ -23,14 +30,14 @@ export type heraSequence = typeof(setmetatable({} :: {
 }, {} :: typeof(heraSequence)))
 
 --[=[
-	@class heraSequence
+	@within heraSequence
 
 	The heraSequence class is designed to be a supercession of the physical state of some
-    Roblox Instance. It contains mutations of state through the dimensions of time, and can
-    generate or contain heraKeyframes describing this mutation.
+	Roblox Instance. It contains mutations of state through the dimensions of time, and can
+	generate or contain heraKeyframes describing this mutation.
 
-	@param heraSequenceCreateInfo;
-	@return heraSequence;
+	@param heraSequenceCreateInfo heraTypes.heraSequenceCreateInfo
+	@return sequence
 ]=]
 function heraSequence.new(heraSequenceCreateInfo : heraTypes.heraSequenceCreateInfo) : heraSequence
 	local class = setmetatable({}, heraSequence);
@@ -46,8 +53,7 @@ function heraSequence.new(heraSequenceCreateInfo : heraTypes.heraSequenceCreateI
 end
 
 --[=[
-	@lib Hera
-	@class heraSequence
+	@within heraSequence
 
 	heraBuildKeyframes is designed to generate the required keyframes needed to accurately replay this sequence according to it's heraCurveBin description.
 ]=]
@@ -56,22 +62,25 @@ function heraSequence:heraBuildKeyframes()
 end
 
 --[=[
-	@lib Hera
-	@class heraSequence
+	@within heraSequence
 
 	heraGetObject returns the object associated with this heraSequence.
+
+	@return object Instance
 ]=]
-function heraSequence:heraGetObject()
+function heraSequence:heraGetObject() : Instance
 	local obj : heraSequence = self;
 
 	return obj.object;
 end
 
 --[=[
-	@lib Hera
-	@class heraSequence
+	
+	@within heraSequence
 
 	heraSetObject sets the object this heraSequence is associated with.
+
+	@param object Instance
 ]=]
 function heraSequence:heraSetObject(object : Instance)
 	local obj : heraSequence = self;
@@ -80,13 +89,13 @@ function heraSequence:heraSetObject(object : Instance)
 end
 
 --[=[
-	@lib Hera
-	@class heraSequence
+	
+	@within heraSequence
 
 	heraUpdate is designed to update this heraSequence to modify the computed
 	state of the object associated with this heraSequence to be associated with the keyframes stored with updated time
 
-	@param time : number
+	@param time number
 ]=]
 function heraSequence:heraUpdate(time : number)
 	local obj : heraSequence = self;
@@ -98,13 +107,13 @@ function heraSequence:heraUpdate(time : number)
 end
 
 --[=[
-	@lib Hera
-	@class heraSequence
+	
+	@within heraSequence
 
 	heraGetKeyframesForTime returns a list of heraKeyframes stored in this heraSequence that have or are related to time t.
 
-	@param property : string;
-	@param time : number;
+	@param property string
+	@param time number
 ]=]
 function heraSequence:heraUpdateProperty(property : string, time : number)
 	local obj : heraSequence = self;
@@ -127,15 +136,15 @@ function heraSequence:heraUpdateProperty(property : string, time : number)
 end
 
 --[=[
-	@lib Hera
-	@class heraSequence
+	
+	@within heraSequence
 
 	heraGetBoundingKeyframesForTime is designed to return the two keyframes that control a property for time T,
 	when the keyframe needs interpolation
 
-	@param property : string;
-	@param time : number;
-	@return keyframeA : heraKeyframe, keyframeB : heraKeyframe
+	@param property string
+	@param time number
+	@return keyframeA heraKeyframe.heraKeyframe, keyframeB heraKeyframe.heraKeyframe
 ]=]
 function heraSequence:heraGetBoundingKeyframesForTime(property : string, time : number) : (heraKeyframe.heraKeyframe, heraKeyframe.heraKeyframe)
 	local obj : heraSequence = self;
@@ -165,11 +174,16 @@ function heraSequence:heraGetBoundingKeyframesForTime(property : string, time : 
 end
 
 --[=[
-	@lib Hera
-	@class heraSequence
+	
+	@within heraSequence
 
 	heraGetComputedKeyframeStateCached is designed to return the cached object which relates to
 	keyframeA and keyframe B for property s at time T
+
+	@param property string
+	@param keyframeA heraKeyframe.heraKeyframe
+	@param keyframeB heraKeyframe.heraKeyframe
+	@return computedKeyframeState heraComputedKeyframeState.heraComputedKeyframeState
 ]=]
 function heraSequence:heraGetComputedKeyframeStateCached(property : string, keyframeA : heraKeyframe.heraKeyframe, keyframeB : heraKeyframe.heraKeyframe) : heraComputedKeyframeState.heraComputedKeyframeState
 	local obj : heraSequence = self;
@@ -200,28 +214,28 @@ function heraSequence:heraGetComputedKeyframeStateCached(property : string, keyf
 end
 
 --[=[
-	@lib Hera
-	@class heraSequence
+	
+	@within heraSequence
 
 	heraGetKeyframes returns a list of all keyframes in this sequence
 
-	@return keyframes : {heraKeyframe};
+	@return keyframes {heraKeyframe.heraKeyframe}
 ]=]
-function heraSequence:heraGetKeyframes()
+function heraSequence:heraGetKeyframes() : {heraKeyframe.heraKeyframe}
 	local obj : heraSequence = self;
 
 	return obj.keyframes;
 end
 
 --[=[
-	@lib Hera
-	@class heraSequence
+	
+	@within heraSequence
 
 	heraAddKeyframe adds a new keyframe for the lowest level representation of
 	the property value across this sequences dimension of time.
 
-	@param heraKeyframeCreateInfo;
-	@return heraKeyframe;
+	@param heraKeyframeCreateInfo heraTypes.heraKeyframeCreateInfo
+	@return heraKeyframe.heraKeyframe
 ]=]
 function heraSequence:heraAddKeyframe(heraKeyframeCreateInfo : heraTypes.heraKeyframeCreateInfo) : heraKeyframe.heraKeyframe
 	local obj : heraSequence = self;
@@ -234,13 +248,13 @@ function heraSequence:heraAddKeyframe(heraKeyframeCreateInfo : heraTypes.heraKey
 end
 
 --[=[
-	@lib Hera
-	@class heraSequence
+	
+	@within heraSequence
 
 	heraGetAffectorKeyframes is designed to return a list of keyframes that affect property S
 
-	@param property : string;
-	@return affectorKeyframes : {heraKeyframe};
+	@param property string
+	@return affectorKeyframes {[number] : heraKeyframe.heraKeyframe}
 ]=]
 function heraSequence:heraGetAffectorKeyframes(property : string) : {[number] : heraKeyframe.heraKeyframe}
 	local obj : heraSequence = self;

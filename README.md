@@ -51,24 +51,24 @@ In no particular order, the following features are available upon immediately bo
 The Project View is a menu that opens when editing a Project.
 Inside the Project View, there are several tabs that each contain several buttons:
 1. File - This tab meets demand for quick file editing. It contains the following sub-menus:
-    - Add Object - This button will prompt you to select an existing GUI object to add to the Project.
-    - New Object - This button will prompt you to create a new empty object, allowing you to configure a blank interface.
-    - New Folder - This button will prompt you to create a new folder in the Project.
-    - Save - This button will save the project state.
-    - Save As - This button will save the project state to a new `.hera` file with the given name, discarding changes since the last save to the current `.hera` file.
-    - Auto-Save - This button will toggle the Auto-Save feature.
-    - Open Project - This button will prompt you to open another project.
-    - Open Recent - This button will open a sub-tree directing to the recent projects.
-    - Close - This button will close the current Project.
-    - Close All - This button will close all open Projects, returning you to the Startup Menu.
+	- Add Object - This button will prompt you to select an existing GUI object to add to the Project.
+	- New Object - This button will prompt you to create a new empty object, allowing you to configure a blank interface.
+	- New Folder - This button will prompt you to create a new folder in the Project.
+	- Save - This button will save the project state.
+	- Save As - This button will save the project state to a new `.hera` file with the given name, discarding changes since the last save to the current `.hera` file.
+	- Auto-Save - This button will toggle the Auto-Save feature.
+	- Open Project - This button will prompt you to open another project.
+	- Open Recent - This button will open a sub-tree directing to the recent projects.
+	- Close - This button will close the current Project.
+	- Close All - This button will close all open Projects, returning you to the Startup Menu.
 2. Edit - This tab meets demand for shortcuts to the various Views.
 3. Selection - This tab allows configurations and shortcuts for selecting various things pertaining to the current View.
 4. View - This tab opens a sub-tree allowing you to select a View. The existing views are:
-    - Dope Sheet - This view shows the keyframes in the Project over time. A keyframe describes the state of the UI at a certain point in time. The animator smoothly changes between these keyframes based on the distance between keyframes and the easing style of the keyframe.
-    - Action Editor - This view shows the Action editor, allowing you to change between and place Actions on the Timeline. Actions allow you to repeat keyframe sequences multiple times, allow you to interpolate between keyframe sequences, and more.
-    - Asset Pool - This view shows the existing assets in the Project, and allows you to add, change, or remove assets.
-    - Curve Editor - This view shows the raw curves of the Transit, and allows you to edit, change, or remove the handles of the splines dictating the motion and appearance of the UI over time.
-    - Script Editor - This view shows a script editor for running macros, shortcuts, and scripts on the current Hera project file.
+	- Dope Sheet - This view shows the keyframes in the Project over time. A keyframe describes the state of the UI at a certain point in time. The animator smoothly changes between these keyframes based on the distance between keyframes and the easing style of the keyframe.
+	- Action Editor - This view shows the Action editor, allowing you to change between and place Actions on the Timeline. Actions allow you to repeat keyframe sequences multiple times, allow you to interpolate between keyframe sequences, and more.
+	- Asset Pool - This view shows the existing assets in the Project, and allows you to add, change, or remove assets.
+	- Curve Editor - This view shows the raw curves of the Transit, and allows you to edit, change, or remove the handles of the splines dictating the motion and appearance of the UI over time.
+	- Script Editor - This view shows a script editor for running macros, shortcuts, and scripts on the current Hera project file.
 5. Run - This tab allows you to configure and execute things for the project to run, and about its runtime behavior.
 6. Editor - This view shows properties and settings for the plugin itself.
 

@@ -9,6 +9,13 @@ local heraTypes = require(script.Parent.Parent.lib.heraTypes);
 local heraSequence = require(script.Parent.heraSequence);
 
 -- Class Definition
+--[=[
+	@class heraTransit
+
+	The heraTransit class is designed to be a data type object which can be used to transfer
+	information across API boundaries according to the rules and conventions of the Hera
+	Virtual API.
+]=]
 local heraTransit = {};
 heraTransit.__index = heraTransit;
 
@@ -20,14 +27,14 @@ export type heraTransit = typeof(setmetatable({} :: {
 }, {} :: typeof(heraTransit)))
 
 --[=[
-	@class heraTransit
+	@within heraTransit
 
 	The heraTransit class is designed to be a data type object which can be used to transfer
 	information across API boundaries according to the rules and conventions of the Hera
 	Virtual API.
 
-	@param heraTransitCreateInfo;
-	@return heraTransit;
+	@param heraTransitCreateInfo heraType.heraTransitCreateInfo
+	@return transit heraTransit
 ]=]
 function heraTransit.new(heraTransitCreateInfo : heraTypes.heraTransitCreateInfo) : heraTransit
 	local class = setmetatable({}, heraTransit);
@@ -39,10 +46,13 @@ function heraTransit.new(heraTransitCreateInfo : heraTypes.heraTransitCreateInfo
 end
 
 --[=[
-	@lib Hera
-	@class heraTransit
+	
+	@within heraTransit
 
 	Returns whether the given Instance is associated with a sequence cache
+
+	@param object Instance
+	@return isPresent boolean
 ]=]
 function heraTransit:heraIsObjectSequenced(object : Instance) : boolean
 	local obj : heraTransit = self;
@@ -52,10 +62,13 @@ function heraTransit:heraIsObjectSequenced(object : Instance) : boolean
 end
 
 --[=[
-	@lib Hera
-	@class heraTransit
+	
+	@within heraTransit
 
 	heraMakeObjectSequenced is designed to create a cache of sequences for the given instance.
+
+	@param object Instance
+	@return heraSequence.heraSequence
 ]=]
 function heraTransit:heraMakeObjectSequenced(object : Instance) : {heraSequence.heraSequence}
 	local obj : heraTransit = self;
@@ -67,10 +80,12 @@ function heraTransit:heraMakeObjectSequenced(object : Instance) : {heraSequence.
 end
 
 --[=[
-	@lib Hera
-	@class heraTransit
+	
+	@within heraTransit
 
 	heraGetHeraSequenceCache is designed to return a cache of instance->sequences
+
+	@return sequenceCache
 ]=]
 function heraTransit:heraGetHeraSequenceCache() : {[Instance] : {heraSequence.heraSequence}}
 	local obj : heraTransit = self;
@@ -79,8 +94,8 @@ function heraTransit:heraGetHeraSequenceCache() : {[Instance] : {heraSequence.he
 end
 
 --[=[
-	@lib Hera
-	@class heraTransit
+	
+	@within heraTransit
 
 	heraGetObjectSequences returns the cache of the given objects sequences
 ]=]

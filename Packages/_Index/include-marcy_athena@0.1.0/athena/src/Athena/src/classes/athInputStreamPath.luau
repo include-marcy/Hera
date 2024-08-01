@@ -12,24 +12,24 @@ local athInputStreamPath = {};
 athInputStreamPath.__index = athInputStreamPath;
 
 export type athInputStreamPath = typeof(setmetatable({} :: {
-    inputType : athTypes.athInformedInputType;
-    inputToCapture : athTypes.athCapturableInputs;
-    inputMobileButtonType : athTypes.athMobileButtonType?;
-    transform : (athTypes.athInputStreamData) -> (athTypes.athInputStreamData)?;
-    athClassName : "athInputStreamPath";
+	inputType : athTypes.athInformedInputType;
+	inputToCapture : athTypes.athCapturableInputs;
+	inputMobileButtonType : athTypes.athMobileButtonType?;
+	transform : (athTypes.athInputStreamData) -> (athTypes.athInputStreamData)?;
+	athClassName : "athInputStreamPath";
 }, {} :: typeof(athInputStreamPath)));
 
 function athInputStreamPath.new(athInputStreamPathCreateInfo : athTypes.athInputStreamPathCreateInfo) : athInputStreamPath
-    local inputStreamPath = setmetatable({
-        athClassName = "athInputStreamPath";
-    }, athInputStreamPath);
+	local inputStreamPath = setmetatable({
+		athClassName = "athInputStreamPath";
+	}, athInputStreamPath);
 
-    inputStreamPath.inputType = athInputStreamPathCreateInfo.inputType;
-    inputStreamPath.inputToCapture = athInputStreamPathCreateInfo.inputToCapture;
-    inputStreamPath.inputMobileButtonType = athInputStreamPathCreateInfo.inputMobileButtonType;
-    inputStreamPath.transform = athInputStreamPathCreateInfo.transform;
+	inputStreamPath.inputType = athInputStreamPathCreateInfo.inputType;
+	inputStreamPath.inputToCapture = athInputStreamPathCreateInfo.inputToCapture;
+	inputStreamPath.inputMobileButtonType = athInputStreamPathCreateInfo.inputMobileButtonType;
+	inputStreamPath.transform = athInputStreamPathCreateInfo.transform;
 
-    return inputStreamPath;
+	return inputStreamPath;
 end
 
 return athInputStreamPath;

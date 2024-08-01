@@ -9,85 +9,85 @@ local athStopwatch = {};
 athStopwatch.__index = athStopwatch;
 
 export type athStopwatch = typeof(setmetatable({} :: {
-    name : string;
-    _clicked : boolean;
-    _startTime : number;
-    _elapsedTime : number;
-    _stopTime : number?;
-    athClassName : "athStopwatch";
+	name : string;
+	_clicked : boolean;
+	_startTime : number;
+	_elapsedTime : number;
+	_stopTime : number?;
+	athClassName : "athStopwatch";
 }, {} :: typeof(athStopwatch)));
 
 --[=[
-    @class athStopwatch
+	@within athStopwatch
 
-    Creates a new athStopwatch.
+	Creates a new athStopwatch.
 
-    @param athStopwatchCreateInfo;
-    @return athStopwatch;
+	@param athStopwatchCreateInfo;
+	@return athStopwatch;
 ]=]
 function athStopwatch.new(athStopwatchCreateInfo) : athStopwatch
-    local stopwatch = setmetatable({
-        athClassName = "athStopwatch";
-    }, athStopwatch);
+	local stopwatch = setmetatable({
+		athClassName = "athStopwatch";
+	}, athStopwatch);
 
-    stopwatch.name = athStopwatchCreateInfo.name;
-    stopwatch._clicked = false;
-    stopwatch._startTime = os.clock();
-    stopwatch._elapsedTime = 0;
+	stopwatch.name = athStopwatchCreateInfo.name;
+	stopwatch._clicked = false;
+	stopwatch._startTime = os.clock();
+	stopwatch._elapsedTime = 0;
 
-    return stopwatch;
+	return stopwatch;
 end
 
 --[=[
-    @class athStopwatch
+	@within athStopwatch
 
-    Stops the timer of this athStopwatch.
+	Stops the timer of this athStopwatch.
 ]=]
 function athStopwatch:athClick()
-    local stopwatch : athStopwatch = self;
+	local stopwatch : athStopwatch = self;
 
-    if stopwatch._clicked then
-        return;
-    end
+	if stopwatch._clicked then
+		return;
+	end
 
-    stopwatch._clicked = true;
-    stopwatch._stopTime = os.clock();
-    stopwatch._elapsedTime = (stopwatch._stopTime - stopwatch._startTime);
+	stopwatch._clicked = true;
+	stopwatch._stopTime = os.clock();
+	stopwatch._elapsedTime = (stopwatch._stopTime - stopwatch._startTime);
 end
 
 --[=[
-    @class athStopwatch
+	@within athStopwatch
 
-    Returns the length of time this stopwatch has been running for.
+	Returns the length of time this stopwatch has been running for.
 
-    @return elapsedTime : number;
+	@return elapsedTime : number;
 ]=]
 function athStopwatch:athGetTime() : number
-    local stopwatch : athStopwatch = self;
+	local stopwatch : athStopwatch = self;
 
-    return stopwatch._elapsedTime;
+	return stopwatch._elapsedTime;
 end
 
 --[=[
-    @class athStopwatch
+	@within athStopwatch
 
-    @retun stopwatchIsClicked : boolean;
+	@retun stopwatchIsClicked : boolean;
 ]=]
 function athStopwatch:athGetState() : boolean
-    local stopwatch : athStopwatch = self;
+	local stopwatch : athStopwatch = self;
 
-    return stopwatch._clicked;
+	return stopwatch._clicked;
 end
 
 --[=[
-    @class athStopwatch
+	@within athStopwatch
 
-    @return name : string;
+	@return name : string;
 ]=]
 function athStopwatch:athGetName() : string
-    local stopwatch : athStopwatch = self;
+	local stopwatch : athStopwatch = self;
 
-    return stopwatch.name;
+	return stopwatch.name;
 end
 
 return athStopwatch;

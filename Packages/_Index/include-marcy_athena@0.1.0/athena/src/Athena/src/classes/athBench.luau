@@ -18,153 +18,153 @@ local athBench = {};
 athBench.__index = athBench;
 
 export type athBench = typeof(setmetatable({} :: {
-    _frequencyHookStates : {[string] : number};
-    _authors : {[string] : athAuthor.athAuthor};
-    athClassName : "athBench";
+	_frequencyHookStates : {[string] : number};
+	_authors : {[string] : athAuthor.athAuthor};
+	athClassName : "athBench";
 }, {} :: typeof(athBench)));
 
 --[=[
-    @class athBench
+	@within athBench
 
-    Creates a new athBench object. An athBench is used to gain insight into the performance of a certain region of
-    an experience. Usually, you should create 1 athBench for use within your library.
+	Creates a new athBench object. An athBench is used to gain insight into the performance of a certain region of
+	an experience. Usually, you should create 1 athBench for use within your library.
 
-    @return athBench
+	@return athBench
 ]=]
 function athBench.new() : athBench
-    local bench = setmetatable({
-        athClassName = "athBench";
-    }, athBench);
+	local bench = setmetatable({
+		athClassName = "athBench";
+	}, athBench);
 
-    bench._frequencyHookStates = {};
-    bench._authors = {};
-    bench._debugDump = {
-        profile = {};
-        tokens = {};
-        biography = {};
-    };
+	bench._frequencyHookStates = {};
+	bench._authors = {};
+	bench._debugDump = {
+		profile = {};
+		tokens = {};
+		biography = {};
+	};
 
-    return bench;
+	return bench;
 end
 
 --[=[
-    @class athBench
+	@within athBench
 
-    Rates the given payload in kb/s against the rate n in seconds.
-    The rate refers to how many times this payload is sent per second. For example,
-    if you sent table T every 40 seconds across the remote network layer, it would have a rate
-    of 40, and an athNetworkUsage of (size(T) * R) KB/s
+	Rates the given payload in kb/s against the rate n in seconds.
+	The rate refers to how many times this payload is sent per second. For example,
+	if you sent table T every 40 seconds across the remote network layer, it would have a rate
+	of 40, and an athNetworkUsage of (size(T) * R) KB/s
 
-    @param payload : any;
-    @param rate : number;
-    @return score : number;
+	@param payload : any;
+	@param rate : number;
+	@return score : number;
 ]=]
 function athBench:athNetworkUsage(payload : any, rate : number) : number
-    -- return the data in kb/s
-    local encoded = HttpService:JSONEncode(payload);
+	-- return the data in kb/s
+	local encoded = HttpService:JSONEncode(payload);
 
-    return (#encoded) * rate;
+	return (#encoded) * rate;
 end
 
 --[=[
-    @class athBench
+	@within athBench
 
-    Registers and returns a hook for the given callback with name.
-    Every time the hook is called, it will increment a counter.
-    This allows you to track the frequency of a callback.
+	Registers and returns a hook for the given callback with name.
+	Every time the hook is called, it will increment a counter.
+	This allows you to track the frequency of a callback.
 
-    @param name : string;
-    @param callback : function;
-    @return freqHook : function;
+	@param name : string;
+	@param callback : function;
+	@return freqHook : function;
 ]=]
 function athBench:athMakeFrequencyHook(name : string, callback : () -> ()) : () -> ()
-    local bench : athBench = self;
-    local num = bench._frequencyHookStates[name] or 0;
+	local bench : athBench = self;
+	local num = bench._frequencyHookStates[name] or 0;
 
-    return function(...)
-        num += 1;
-        bench._frequencyHookStates[name] = num;
-        callback(...);
-    end
+	return function(...)
+		num += 1;
+		bench._frequencyHookStates[name] = num;
+		callback(...);
+	end
 end
 
 --[=[
-    @class athBench
+	@within athBench
 
-    Returns the frequency associated with the given name of a frequency hook.
-    This tells you how many times (the frequency) a callback has been called in this athBench environment.
+	Returns the frequency associated with the given name of a frequency hook.
+	This tells you how many times (the frequency) a callback has been called in this athBench environment.
 
-    @param name : string;
-    @return frequency : number;
+	@param name : string;
+	@return frequency : number;
 ]=]
 function athBench:athGetFrequency(name : string) : number
-    local bench : athBench = self;
-    local num = bench._frequencyHookStates[name] or 0;
+	local bench : athBench = self;
+	local num = bench._frequencyHookStates[name] or 0;
 
-    return num
+	return num
 end
 
 --[=[
-    @class athBench
+	@within athBench
 
-    Creates a new athToken object, which are immutable data objects that signal global state which can allow your library
-    to reason about the experience in different ways.
+	Creates a new athToken object, which are immutable data objects that signal global state which can allow your library
+	to reason about the experience in different ways.
 
-    @param name : string;
-    @param value : any;
-    @return athToken
+	@param name : string;
+	@param value : any;
+	@return athToken
 ]=]
 function athBench:athMakeToken(name : string, value : any) : athToken.athToken
-    local bench : athBench = self;
+	local bench : athBench = self;
 
-    local token = athToken.new({
-        name = name;
-        value = value;
-    })
+	local token = athToken.new({
+		name = name;
+		value = value;
+	})
 
-    bench._debugDump.tokens[name] = token;
+	bench._debugDump.tokens[name] = token;
 
-    return token;
+	return token;
 end
 
 --[=[
-    @class athBench
+	@within athBench
 
-    Reads the stored athToken object and returns its value, if any exists.
+	Reads the stored athToken object and returns its value, if any exists.
 
-    @param name : string;
-    @return tokenValue : any;
+	@param name : string;
+	@return tokenValue : any;
 ]=]
 function athBench:athReadToken(name : string) : any
-    local bench : athBench = self;
+	local bench : athBench = self;
 
-    local token : athToken.athToken? = bench._debugDump.tokens[name];
-    if not token then
-        return nil;
-    end
+	local token : athToken.athToken? = bench._debugDump.tokens[name];
+	if not token then
+		return nil;
+	end
 
-    return token:athReadValue();
+	return token:athReadValue();
 end
 
 --[=[
-    @class athBench
+	@within athBench
 
-    Creates a new athStopwatch, a performance clocking device which allows you to easily track the time between lines of code.
-    Stopwatch performance information is stored in the athBench, allowing you to perform multiple tests on the same
-    "name", and then easily process all that information in the debug dump of the athBench.
+	Creates a new athStopwatch, a performance clocking device which allows you to easily track the time between lines of code.
+	Stopwatch performance information is stored in the athBench, allowing you to perform multiple tests on the same
+	"name", and then easily process all that information in the debug dump of the athBench.
 
-    @param name : string;
-    @return athStopwatch;
+	@param name : string;
+	@return athStopwatch;
 ]=]
 function athBench:athMakeStopwatch(name : string) : athStopwatch.athStopwatch
-    local bench : athBench = self;
-    local stopwatch = athStopwatch.new({
-        name = name;
-    });
+	local bench : athBench = self;
+	local stopwatch = athStopwatch.new({
+		name = name;
+	});
 
-    bench._debugDump.profile[name] = stopwatch;
+	bench._debugDump.profile[name] = stopwatch;
 
-    return stopwatch;
+	return stopwatch;
 end
 
 function athBench:athAverageProfile(name : string) : number
@@ -172,30 +172,30 @@ function athBench:athAverageProfile(name : string) : number
 
    local stopwatch = bench._debugDump.profile[name];
    if not stopwatch then
-       return 0;
+	   return 0;
    end
 
    
 end
 
 --[=[
-    @class athBench
+	@within athBench
 
-    Creates and stores a new athAuthor, allowing you to denote information in the experience biography.
-    For more info, check out `athAuthor.luau`
+	Creates and stores a new athAuthor, allowing you to denote information in the experience biography.
+	For more info, check out `athAuthor.luau`
 
-    @param name : string;
-    @return athAuthor;
+	@param name : string;
+	@return athAuthor;
 ]=]
 function athBench:athMakeAuthor(name : string) : athAuthor.athAuthor
-    local bench : athBench = self;
-    local author = athAuthor.new({
-        name = name;
-    });
+	local bench : athBench = self;
+	local author = athAuthor.new({
+		name = name;
+	});
 
-    bench._authors[name] = author;
+	bench._authors[name] = author;
 
-    return author;
+	return author;
 end
 
 return athBench;
