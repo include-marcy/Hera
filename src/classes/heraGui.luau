@@ -1,4 +1,4 @@
--- This file is a part of the Hera library. Hera is licensed under the terms of the MIT License. For more information, see LICENSE.md
+-- This file is a part of the Hera library. Hera is licensed under the terms of the GNU GENERAL PUBLIC LICENSE v3.0. For more information, see LICENSE.md
 
 --!strict
 --!native

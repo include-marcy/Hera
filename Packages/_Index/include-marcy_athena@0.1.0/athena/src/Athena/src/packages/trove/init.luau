@@ -2,7 +2,7 @@
 -- Stephen Leitnick
 -- October 16, 2021
 
--- This file is part of the Athena library and is licensed under MIT License; see LICENSE.md for details
+-- This file is part of the Athena library and is licensed under GNU GENERAL PUBLIC LICENSE v3.0; see LICENSE.md for details
 -- Modified by Marceline C. to support a new method (instanceTrove), a class type declaration,
 -- and a raw athDestroy method to clean the object fully.
 -- July 13, 2024
