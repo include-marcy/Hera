@@ -7,7 +7,6 @@
 		"$ignoreUnknownInstances": true,
 
 		"Hera": {
-		  "$className": "ModuleScript",
 		  "$ignoreUnknownInstances": true,
 		  "$path": "src",
 		  "heraPackages": {

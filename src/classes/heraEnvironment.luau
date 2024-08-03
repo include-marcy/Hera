@@ -26,6 +26,7 @@ heraEnvironment.__index = heraEnvironment;
 export type heraEnvironment = typeof(setmetatable({} :: {
 	heraClassName : "heraEnvironment";
 	name : string;
+	guiCreateInfo : heraTypes.heraGuiCreateInfo;
 	heraSequences : {heraSequence.heraSequence};
 	heraTimeline : heraTimeline.heraTimeline;
 	heraGui : heraGui.heraGui;
@@ -44,6 +45,7 @@ function heraEnvironment.new(heraEnvironmentCreateInfo : heraTypes.heraEnvironme
 	local class = setmetatable({}, heraEnvironment);
 	class.heraClassName = "heraEnvironment";
 	class.name = heraEnvironmentCreateInfo.name;
+	class.guiCreateInfo = heraEnvironmentCreateInfo.guiCreateInfo;
 
 	return class;
 end
@@ -57,7 +59,7 @@ function heraEnvironment:heraInit()
 	local obj : heraEnvironment = self;
 
 	do -- Create the main gui
-		local gui = heraGui.new();
+		local gui = heraGui.new(obj.guiCreateInfo);
 		gui:heraMakePluginRoot();
 
 		obj.heraGui = gui;
