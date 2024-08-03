@@ -8,6 +8,7 @@
 local heraTypes = require(script.Parent.Parent.lib.heraTypes);
 local heraKeyframe = require(script.Parent.heraKeyframe);
 local heraComputedKeyframeState = require(script.Parent.heraComputedKeyframeState);
+local heraPort = require(script.Parent.heraPort);
 
 -- Class Definition
 --[=[

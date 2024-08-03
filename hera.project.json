@@ -32,7 +32,7 @@
 		"StarterPlayerScripts": {
 		  "$className": "StarterPlayerScripts",
 		  "$ignoreUnknownInstances": true,
-		  "$path": "src/StarterPlayer/StarterPlayerScripts"
+		  "$path": "tests"
 		},
 		"$ignoreUnknownInstances": true
 	  },

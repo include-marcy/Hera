@@ -1,0 +1,3 @@
+return {
+    heraGuiEnabled = true;
+};
