@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="570" height="906" src="https://github.com/include-marcy/Hera/blob/f1d162f6a73f377cf48e4ef4a7f44ca8e4d7a73d/assets/DarkHera.png?raw=true" />
+  <img width="375" height="164" src="https://github.com/include-marcy/Hera/blob/f1d162f6a73f377cf48e4ef4a7f44ca8e4d7a73d/assets/DarkHera.png?raw=true" />
 </p>
 
 <div align="center">
