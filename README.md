@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="570" height="906" src="https://github.com/include-marcy/Hera/blob/0eb6fa3813328440bdf91eee3a85a459504ea9bd/assets/HeraTextLogoDarkMode.png?raw=true" />
+  <img width="570" height="906" src="https://github.com/include-marcy/Hera/blob/f1d162f6a73f377cf48e4ef4a7f44ca8e4d7a73d/assets/DarkHera.png?raw=true" />
 </p>
 
 <div align="center">
@@ -18,7 +18,7 @@ A `heraTransit` is a Luau object that can be created from an exported `.hera` fi
 
 # Hera Transit Designer
 <p align="center">
-  <img src="https://github.com/include-marcy/Hera/blob/0eb6fa3813328440bdf91eee3a85a459504ea9bd/assets/HeraTransitDesignerLogo.png?raw=true" />
+  <img src="https://github.com/include-marcy/Hera/blob/f1d162f6a73f377cf48e4ef4a7f44ca8e4d7a73d/assets/DarkHera.png?raw=true" />
 </p>
 
 <div align="center">
